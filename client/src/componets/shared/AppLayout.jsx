@@ -5,20 +5,15 @@ import {
     FaHome,
     FaUsers,
     FaFolder,
-    FaCalendar,
-    FaInbox,
-    FaChartBar,
     FaTimes,
     FaBars,
     FaTerminal,
     FaDatabase,
-    FaModx,
     FaPuzzlePiece,
     FaUsersCog,
     FaCreditCard,
 } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.production.min';
+import { Link, matchPath, useLocation, useMatch } from 'react-router-dom';
 
 const navigation = [
     { name: 'Dashboard', href: '/', icon: FaHome, current: true },
@@ -46,22 +41,24 @@ const AppLayout = ({ children, pageTitle }) => {
         return location.pathname === path;
     };
 
+    const serverMatch = useMatch({
+        path: '/servers/:id',
+        end: true,
+    });
+
+    /**
+     *
+     * @param {String} path
+     * @returns {Boolean}
+     */
     const isServerActive = (path) => {
-        // Regex to check if path is a server path
-        const serverPath = /^\/servers\/\d+/;
-        return serverPath.test(path);
+        const match = matchPath(`/servers/:id${path}`, location.pathname);
+
+        return !!match;
     };
 
     return (
         <>
-            {/*
-      This example requires updating your template:
-
-      ```
-      <html class="h-full bg-gray-100">
-      <body class="h-full">
-      ```
-    */}
             <div>
                 <Transition.Root show={sidebarOpen} as={Fragment}>
                     <Dialog
@@ -151,7 +148,7 @@ const AppLayout = ({ children, pageTitle }) => {
                                                 {item.name}
                                             </Link>
                                         ))}
-                                        <div>
+                                        <div className="">
                                             <hr className="mt-3 border-b-0 border-gray-200" />
                                             <span className="px-2 py-2 mt-3 rounded-md text-base font-medium text-gray-900">
                                                 Server
@@ -255,7 +252,7 @@ const AppLayout = ({ children, pageTitle }) => {
                                     </Link>
                                 ))}
                                 {/* Divider with title */}
-                                <div>
+                                <div className="mb-4">
                                     <hr className="mt-3 border-b-0 border-gray-200" />
                                     <span className="px-2 py-2 mt-3 rounded-md text-sm font-medium text-gray-900">
                                         Server

@@ -81,7 +81,7 @@ const ServerList = () => {
                                             alt=""
                                         />
                                     </div>
-                                    <div className="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                                    <div className="min-w-0 flex-1 px-4 lg:grid lg:grid-cols-2 lg:gap-4">
                                         <div>
                                             <p className="text-sm font-medium text-green-600 truncate">
                                                 {server.name}
@@ -93,7 +93,7 @@ const ServerList = () => {
                                             </p>
                                         </div>
                                         <div className="hidden md:block">
-                                            <div className="grid grid-cols-2 grid-rows-2 gap-2 items-center justify-center">
+                                            <div className="mt-4 grid grid-cols-2 grid-rows-2 gap-2 items-center justify-center">
                                                 <p className="text-sm text-gray-900 flex gap-1">
                                                     <FaMicrochip
                                                         className="flex-shrink-0 mr-1.5 h-5 w-5"

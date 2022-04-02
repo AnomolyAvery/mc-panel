@@ -5,7 +5,7 @@ const ServerStatus = ({ status }) => {
     const getStatusColor = (status) => {
         switch (status) {
             case 'running':
-                return 'text-green-300';
+                return 'text-green-300 animate animate-pulse';
             case 'stopped':
                 return 'text-red-300';
             case 'installing':
